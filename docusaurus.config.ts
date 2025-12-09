@@ -18,12 +18,12 @@ const config: Config = {
   url: 'https://umeradnan7106.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/physical-ai-robotics-book/',
+  baseUrl: '/Physical-AI-Humanoid-Robotics-Course/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'umeradnan7106', // GitHub org/user name
-  projectName: 'physical-ai-robotics-book', // GitHub repo name
+  projectName: 'Physical-AI-Humanoid-Robotics-Course', // GitHub repo name
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
@@ -106,12 +106,12 @@ const config: Config = {
           label: 'Book',
         },
         {
-          href: 'https://github.com/umeradnan7106/physical-ai-code-examples',
+          href: 'https://github.com/umeradnan7106/Physical-AI-Humanoid-Robotics-Course',
           label: 'Code Examples',
           position: 'left',
         },
         {
-          href: 'https://github.com/umeradnan7106/physical-ai-robotics-book',
+          href: 'https://github.com/umeradnan7106/Physical-AI-Humanoid-Robotics-Course',
           label: 'GitHub',
           position: 'right',
         },
