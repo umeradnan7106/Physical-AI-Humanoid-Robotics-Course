@@ -1,0 +1,162 @@
+/**
+ * Physical AI & Humanoid Robotics - Custom Theme
+ * Optimized for technical content with Flesch-Kincaid grade 10-12 readability
+ */
+
+/* Color Scheme: Robotics-inspired palette */
+:root {
+  /* Primary: Deep blue (robotics/AI) */
+  --ifm-color-primary: #2563eb;
+  --ifm-color-primary-dark: #1d4ed8;
+  --ifm-color-primary-darker: #1e40af;
+  --ifm-color-primary-darkest: #1e3a8a;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #60a5fa;
+  --ifm-color-primary-lightest: #93c5fd;
+
+  /* Accent colors for different content types */
+  --ifm-color-success: #10b981; /* ROS 2 green */
+  --ifm-color-warning: #f59e0b; /* Warning/attention */
+  --ifm-color-danger: #ef4444; /* Error states */
+  --ifm-color-info: #06b6d4; /* Tips/info boxes */
+
+  /* Typography for readability (FK grade 10-12) */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, monospace;
+  --ifm-font-size-base: 17px; /* Slightly larger for better readability */
+  --ifm-line-height-base: 1.7; /* Improved line spacing */
+  --ifm-heading-font-weight: 600;
+
+  /* Code blocks */
+  --ifm-code-font-size: 90%;
+  --ifm-code-padding-vertical: 0.1rem;
+  --ifm-code-padding-horizontal: 0.3rem;
+  --ifm-code-border-radius: 0.25rem;
+  --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.1);
+
+  /* Spacing */
+  --ifm-spacing-horizontal: 1.5rem;
+  --ifm-spacing-vertical: 1.5rem;
+}
+
+/* Dark mode: Enhanced contrast for code and technical content */
+[data-theme='dark'] {
+  --ifm-color-primary: #60a5fa;
+  --ifm-color-primary-dark: #3b82f6;
+  --ifm-color-primary-darker: #2563eb;
+  --ifm-color-primary-darkest: #1d4ed8;
+  --ifm-color-primary-light: #93c5fd;
+  --ifm-color-primary-lighter: #bfdbfe;
+  --ifm-color-primary-lightest: #dbeafe;
+
+  --ifm-background-color: #0f172a; /* Darker background */
+  --ifm-background-surface-color: #1e293b;
+  --docusaurus-highlighted-code-line-bg: rgba(96, 165, 250, 0.15);
+}
+
+/* Typography enhancements */
+.markdown h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--ifm-color-primary);
+  padding-bottom: 0.5rem;
+}
+
+.markdown h2 {
+  font-size: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary);
+}
+
+.markdown h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.markdown p {
+  margin-bottom: 1.25rem;
+  max-width: 75ch; /* Optimal line length for readability */
+}
+
+/* Code block styling for Python/ROS 2 */
+.prism-code {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+code {
+  background-color: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  color: var(--ifm-color-primary-dark);
+  font-weight: 500;
+}
+
+[data-theme='dark'] code {
+  background-color: rgba(96, 165, 250, 0.12);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  color: var(--ifm-color-primary-light);
+}
+
+/* Admonitions (tips, warnings, etc.) */
+.admonition {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+/* Table styling for hardware specs, comparisons */
+table {
+  font-size: 0.95rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+table thead {
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+table th {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+
+table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ifm-table-border-color);
+}
+
+/* Sidebar customization */
+.menu__link--active {
+  font-weight: 600;
+  border-left: 3px solid var(--ifm-color-primary);
+  padding-left: calc(var(--ifm-menu-link-padding-horizontal) - 3px);
+}
+
+/* Footer customization */
+.footer {
+  background-color: var(--ifm-background-surface-color);
+  border-top: 2px solid var(--ifm-color-primary);
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  :root {
+    --ifm-font-size-base: 16px;
+  }
+
+  .markdown h1 {
+    font-size: 2rem;
+  }
+
+  .markdown h2 {
+    font-size: 1.75rem;
+  }
+}

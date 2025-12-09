@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" width="900" height="700">
+  <defs>
+    <style>
+      .node-box { fill: #10b981; stroke: #059669; stroke-width: 2; }
+      .topic-box { fill: #f59e0b; stroke: #d97706; stroke-width: 2; }
+      .service-box { fill: #8b5cf6; stroke: #7c3aed; stroke-width: 2; }
+      .node-text { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: bold; text-anchor: middle; }
+      .topic-text { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: bold; text-anchor: middle; }
+      .detail-text { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; text-anchor: middle; }
+      .pub-arrow { stroke: #059669; stroke-width: 3; fill: none; marker-end: url(#pub-arrowhead); stroke-dasharray: 5,5; }
+      .sub-arrow { stroke: #dc2626; stroke-width: 3; fill: none; marker-end: url(#sub-arrowhead); }
+      .srv-arrow { stroke: #7c3aed; stroke-width: 3; fill: none; marker-end: url(#srv-arrowhead); }
+      .label { fill: #1e293b; font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; }
+      .title { fill: #1e293b; font-family: 'Segoe UI', Arial, sans-serif; font-size: 26px; font-weight: bold; text-anchor: middle; }
+      .legend-text { fill: #1e293b; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; }
+    </style>
+    <marker id="pub-arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#059669" />
+    </marker>
+    <marker id="sub-arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#dc2626" />
+    </marker>
+    <marker id="srv-arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#7c3aed" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="35" class="title">ROS 2 Node Communication Patterns</text>
+
+  <!-- Sensor Node (Publisher) -->
+  <rect x="50" y="100" width="180" height="80" rx="8" class="node-box"/>
+  <text x="140" y="130" class="node-text">Sensor Node</text>
+  <text x="140" y="150" class="detail-text">camera_driver</text>
+  <text x="140" y="167" class="detail-text">Publishes at 30 Hz</text>
+
+  <!-- Controller Node (Subscriber + Publisher) -->
+  <rect x="360" y="100" width="180" height="80" rx="8" class="node-box"/>
+  <text x="450" y="130" class="node-text">Controller Node</text>
+  <text x="450" y="150" class="detail-text">robot_controller</text>
+  <text x="450" y="167" class="detail-text">Processes & Commands</text>
+
+  <!-- Actuator Node (Subscriber) -->
+  <rect x="670" y="100" width="180" height="80" rx="8" class="node-box"/>
+  <text x="760" y="130" class="node-text">Actuator Node</text>
+  <text x="760" y="150" class="detail-text">joint_driver</text>
+  <text x="760" y="167" class="detail-text">Executes commands</text>
+
+  <!-- Topic 1: /camera/image -->
+  <ellipse cx="270" cy="140" rx="65" ry="35" class="topic-box"/>
+  <text x="270" y="143" class="topic-text">/camera/image</text>
+  <text x="270" y="158" class="detail-text">(sensor_msgs)</text>
+
+  <!-- Topic 2: /joint_commands -->
+  <ellipse cx="590" cy="140" rx="75" ry="35" class="topic-box"/>
+  <text x="590" y="143" class="topic-text">/joint_commands</text>
+  <text x="590" y="158" class="detail-text">(sensor_msgs)</text>
+
+  <!-- Publish arrows to topics -->
+  <path d="M 230 140 L 205 140" class="pub-arrow"/>
+  <text x="217" y="130" class="label" style="fill: #059669;">publish</text>
+
+  <path d="M 540 140 L 515 140" class="pub-arrow"/>
+  <text x="527" y="130" class="label" style="fill: #059669;">publish</text>
+
+  <!-- Subscribe arrows from topics -->
+  <path d="M 335 140 L 360 140" class="sub-arrow"/>
+  <text x="347" y="130" class="label" style="fill: #dc2626;">subscribe</text>
+
+  <path d="M 665 140 L 670 140" class="sub-arrow"/>
+  <text x="667" y="130" class="label" style="fill: #dc2626;">subscribe</text>
+
+  <!-- Service Pattern Section -->
+  <text x="450" y="260" style="fill: #1e293b; font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: bold; text-anchor: middle;">Service-Based Communication</text>
+
+  <!-- Client Node -->
+  <rect x="150" y="300" width="180" height="80" rx="8" class="node-box"/>
+  <text x="240" y="330" class="node-text">Client Node</text>
+  <text x="240" y="350" class="detail-text">path_planner</text>
+  <text x="240" y="367" class="detail-text">Requests computation</text>
+
+  <!-- Server Node -->
+  <rect x="570" y="300" width="180" height="80" rx="8" class="node-box"/>
+  <text x="660" y="330" class="node-text">Server Node</text>
+  <text x="660" y="350" class="detail-text">ik_solver</text>
+  <text x="660" y="367" class="detail-text">Computes & responds</text>
+
+  <!-- Service -->
+  <rect x="375" y="315" width="150" height="50" rx="5" class="service-box"/>
+  <text x="450" y="338" class="topic-text">/compute_ik</text>
+  <text x="450" y="355" class="detail-text">(Request/Response)</text>
+
+  <!-- Service request arrow -->
+  <path d="M 330 340 L 375 340" class="srv-arrow"/>
+  <text x="352" y="330" class="label" style="fill: #7c3aed;">request</text>
+
+  <!-- Service response arrow -->
+  <path d="M 525 345 L 570 345" class="srv-arrow"/>
+  <text x="547" y="335" class="label" style="fill: #7c3aed;">response</text>
+
+  <!-- Multi-Subscriber Pattern Section -->
+  <text x="450" y="450" style="fill: #1e293b; font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: bold; text-anchor: middle;">Many-to-Many Communication</text>
+
+  <!-- Publisher Node -->
+  <rect x="360" y="490" width="180" height="70" rx="8" class="node-box"/>
+  <text x="450" y="518" class="node-text">Publisher</text>
+  <text x="450" y="538" class="detail-text">telemetry_node</text>
+
+  <!-- Topic in center -->
+  <ellipse cx="450" cy="615" rx="80" ry="35" class="topic-box"/>
+  <text x="450" y="618" class="topic-text">/robot_status</text>
+  <text x="450" y="633" class="detail-text">(std_msgs)</text>
+
+  <!-- Multiple Subscribers -->
+  <rect x="100" y="670" width="150" height="25" rx="4" class="node-box" style="fill: #6ee7b7"/>
+  <text x="175" y="687" style="fill: #064e3b; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: bold; text-anchor: middle;">Logger Node</text>
+
+  <rect x="300" y="670" width="150" height="25" rx="4" class="node-box" style="fill: #6ee7b7"/>
+  <text x="375" y="687" style="fill: #064e3b; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: bold; text-anchor: middle;">Monitor Node</text>
+
+  <rect x="500" y="670" width="150" height="25" rx="4" class="node-box" style="fill: #6ee7b7"/>
+  <text x="575" y="687" style="fill: #064e3b; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: bold; text-anchor: middle;">Dashboard Node</text>
+
+  <rect x="700" y="670" width="150" height="25" rx="4" class="node-box" style="fill: #6ee7b7"/>
+  <text x="775" y="687" style="fill: #064e3b; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: bold; text-anchor: middle;">Analytics Node</text>
+
+  <!-- Publish arrow from node to topic -->
+  <path d="M 450 560 L 450 580" class="pub-arrow"/>
+  <text x="470" y="573" class="label" style="fill: #059669;">publish</text>
+
+  <!-- Subscribe arrows from topic to nodes -->
+  <path d="M 400 645 L 200 670" class="sub-arrow"/>
+  <path d="M 425 645 L 375 670" class="sub-arrow"/>
+  <path d="M 475 645 L 575 670" class="sub-arrow"/>
+  <path d="M 500 645 L 750 670" class="sub-arrow"/>
+
+  <!-- Legend -->
+  <rect x="20" y="620" width="15" height="15" style="fill: #059669; stroke: #047857;"/>
+  <text x="42" y="632" class="legend-text">Publish (1-to-many)</text>
+
+  <rect x="20" y="640" width="15" height="15" style="fill: #dc2626; stroke: #b91c1c;"/>
+  <text x="42" y="652" class="legend-text">Subscribe (many can listen)</text>
+
+  <rect x="20" y="660" width="15" height="15" style="fill: #7c3aed; stroke: #6d28d9;"/>
+  <text x="42" y="672" class="legend-text">Service (1-to-1 request/response)</text>
+</svg>

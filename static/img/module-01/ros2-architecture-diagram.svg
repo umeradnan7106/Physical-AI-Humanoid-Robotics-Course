@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <style>
+      .layer-box { fill: #3b82f6; stroke: #1e40af; stroke-width: 2; }
+      .layer-text { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .detail-text { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+      .arrow { stroke: #1e40af; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .label { fill: #1e293b; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; text-anchor: middle; }
+      .title { fill: #1e293b; font-family: 'Segoe UI', Arial, sans-serif; font-size: 24px; font-weight: bold; text-anchor: middle; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#1e40af" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="35" class="title">ROS 2 Architecture: Layered Communication Stack</text>
+
+  <!-- Application Layer -->
+  <rect x="100" y="80" width="600" height="70" rx="5" class="layer-box" style="fill: #8b5cf6"/>
+  <text x="400" y="110" class="layer-text">Application Layer</text>
+  <text x="400" y="135" class="detail-text">Your Robot Code (Python, C++)</text>
+
+  <!-- Arrow 1 -->
+  <path d="M 400 150 L 400 175" class="arrow"/>
+  <text x="450" y="165" class="label">Node API calls</text>
+
+  <!-- rclpy/rclcpp Layer -->
+  <rect x="100" y="180" width="600" height="70" rx="5" class="layer-box" style="fill: #3b82f6"/>
+  <text x="400" y="210" class="layer-text">Client Libraries</text>
+  <text x="250" y="235" class="detail-text">rclpy (Python)</text>
+  <text x="400" y="235" class="detail-text">|</text>
+  <text x="550" y="235" class="detail-text">rclcpp (C++)</text>
+
+  <!-- Arrow 2 -->
+  <path d="M 400 250 L 400 275" class="arrow"/>
+  <text x="480" y="265" class="label">Standardized interface</text>
+
+  <!-- rcl Layer -->
+  <rect x="100" y="280" width="600" height="70" rx="5" class="layer-box" style="fill: #2563eb"/>
+  <text x="400" y="310" class="layer-text">ROS Client Library (rcl)</text>
+  <text x="400" y="335" class="detail-text">Language-agnostic core library</text>
+
+  <!-- Arrow 3 -->
+  <path d="M 400 350 L 400 375" class="arrow"/>
+  <text x="480" y="365" class="label">Middleware abstraction</text>
+
+  <!-- rmw Layer -->
+  <rect x="100" y="380" width="600" height="70" rx="5" class="layer-box" style="fill: #1d4ed8"/>
+  <text x="400" y="410" class="layer-text">ROS Middleware Interface (rmw)</text>
+  <text x="400" y="435" class="detail-text">DDS abstraction layer</text>
+
+  <!-- Arrow 4 -->
+  <path d="M 400 450 L 400 475" class="arrow"/>
+  <text x="490" y="465" class="label">DDS implementation selection</text>
+
+  <!-- DDS Layer -->
+  <rect x="100" y="480" width="280" height="60" rx="5" class="layer-box" style="fill: #1e40af"/>
+  <text x="240" y="505" class="layer-text">Fast DDS</text>
+  <text x="240" y="525" class="detail-text">(Default)</text>
+
+  <rect x="420" y="480" width="280" height="60" rx="5" class="layer-box" style="fill: #1e40af"/>
+  <text x="560" y="505" class="layer-text">Cyclone DDS</text>
+  <text x="560" y="525" class="detail-text">(Alternative)</text>
+
+  <!-- Arrow 5 (split) -->
+  <path d="M 240 540 L 240 560" class="arrow"/>
+  <path d="M 560 540 L 560 560" class="arrow"/>
+
+  <!-- Network Layer -->
+  <rect x="100" y="560" width="600" height="35" rx="5" style="fill: #0f172a; stroke: #1e40af; stroke-width: 2;"/>
+  <text x="400" y="583" style="fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: bold; text-anchor: middle;">UDP/TCP Network Transport</text>
+</svg>

@@ -1,0 +1,120 @@
+---
+id: [CHAPTER_ID]
+title: [CHAPTER_TITLE]
+sidebar_label: [SIDEBAR_LABEL]
+sidebar_position: [POSITION]
+description: [1-2 sentence description]
+keywords: [[keyword1], [keyword2], [keyword3]]
+module_id: [module-id]
+reading_time: [ESTIMATED_MINUTES]
+prerequisites: [[/path/to/prereq]]
+code_examples:
+  - "[https://github.com/org/physical-ai-code/tree/main/module-XX/example]"
+---
+
+# [CHAPTER_TITLE]
+
+**Learning Outcomes**: By the end of this chapter, you will be able to:
+- [Outcome 1]
+- [Outcome 2]
+- [Outcome 3]
+
+**Prerequisites**:
+- [Prerequisite 1]
+- [Prerequisite 2]
+
+**Estimated Time**: [X] hours
+
+---
+
+## Introduction
+
+[Brief introduction (2-3 paragraphs) explaining what this chapter covers and why it matters for Physical AI development]
+
+## [Section 1 Heading]
+
+[Content following Flesch-Kincaid grade 10-12 readability]
+
+### [Subsection if needed]
+
+[Content with examples]
+
+```python
+# Example code snippet
+import rclpy
+from rclpy.node import Node
+
+class ExampleNode(Node):
+    def __init__(self):
+        super().__init__('example_node')
+        self.get_logger().info('Node started!')
+
+def main():
+    rclpy.init()
+    node = ExampleNode()
+    rclpy.spin(node)
+    rclpy.shutdown()
+```
+
+:::tip Common Pitfall
+[Describe a common mistake and how to avoid it]
+:::
+
+## [Section 2 Heading]
+
+[More content]
+
+## Hands-On Tutorial
+
+[Step-by-step tutorial matching the "Learn By Doing" constitutional principle]
+
+**Step 1**: [Action]
+```bash
+# Command to run
+ros2 run package_name node_name
+```
+
+**Expected Output**:
+```
+[Expected console output]
+```
+
+**Step 2**: [Next action]
+
+[Continue with remaining steps...]
+
+## Verification
+
+To verify your implementation works correctly:
+
+1. [Verification step 1]
+2. [Verification step 2]
+3. [Verification step 3]
+
+## Summary
+
+[3-4 bullet points summarizing key takeaways]
+
+- **Key Concept 1**: [Brief explanation]
+- **Key Concept 2**: [Brief explanation]
+- **Key Concept 3**: [Brief explanation]
+
+## Exercises
+
+1. **[Exercise Title]** (Difficulty: Beginner)
+   - Task: [What to implement]
+   - Acceptance: [How to verify success]
+
+2. **[Exercise Title]** (Difficulty: Intermediate)
+   - Task: [What to implement]
+   - Acceptance: [How to verify success]
+
+## Further Reading
+
+- [ROS 2 Documentation Link]
+- [Research Paper or Article]
+- [Related Tutorial]
+
+## Next Chapter
+
+Continue to [Next Chapter Title](/docs/module-XX/next-chapter) to learn about [brief description].

@@ -1,0 +1,52 @@
+name: Link Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**/*.md'
+      - 'docs/**/*.mdx'
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run weekly to catch broken external links
+    - cron: '0 0 * * 0'
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install linkinator
+        run: npm install -g linkinator
+
+      - name: Build site
+        run: |
+          npm ci
+          npm run build
+
+      - name: Check internal links
+        run: |
+          linkinator build --recurse --skip "^(?!http://localhost)" --format json > link-report.json || true
+
+      - name: Display link report
+        run: |
+          cat link-report.json | jq -r '.links[] | select(.state == "BROKEN") | "❌ \(.url) (from \(.parent))"'
+
+      - name: Fail on broken links
+        run: |
+          broken_count=$(cat link-report.json | jq '[.links[] | select(.state == "BROKEN")] | length')
+          echo "Found $broken_count broken links"
+          if [ $broken_count -gt 0 ]; then
+            echo "::error::Found broken links. See job output for details."
+            exit 1
+          fi
+          echo "✅ All links valid"
