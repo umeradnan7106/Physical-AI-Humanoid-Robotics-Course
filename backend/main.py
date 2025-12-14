@@ -12,7 +12,7 @@ import uuid
 
 # Import custom modules
 from database import get_db, init_db, save_conversation, get_conversation_history, save_feedback, track_event
-from rag import chat_with_rag
+from rag_free import chat_with_rag
 
 load_dotenv()
 
