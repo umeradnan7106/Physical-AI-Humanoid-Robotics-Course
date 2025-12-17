@@ -72,9 +72,9 @@ async def startup_event():
     """Initialize database on startup"""
     try:
         init_db()
-        print("✅ Database initialized successfully!")
+        print("Database initialized successfully!")
     except Exception as e:
-        print(f"❌ Database initialization failed: {e}")
+        print(f"Database initialization failed: {e}")
 
 # Health check endpoint
 @app.get("/", response_model=HealthResponse)

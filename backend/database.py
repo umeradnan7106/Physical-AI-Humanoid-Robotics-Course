@@ -24,7 +24,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 def init_db():
     """Initialize database tables"""
     Base.metadata.create_all(bind=engine)
-    print("✅ Database tables created successfully!")
+    print("Database tables created successfully!")
 
 def get_db():
     """Get database session"""
@@ -95,7 +95,7 @@ def track_event(
     analytics = Analytics(
         event_type=event_type,
         session_id=session_id,
-        metadata=json.dumps(metadata) if metadata else None
+        event_metadata=json.dumps(metadata) if metadata else None
     )
     db.add(analytics)
     db.commit()

@@ -13,7 +13,7 @@ load_dotenv()
 
 # Initialize Gemini
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-gemini_model = genai.GenerativeModel('gemini-pro')
+gemini_model = genai.GenerativeModel('gemini-2.5-flash')
 
 # Initialize local embedding model (FREE!)
 embedding_model = SentenceTransformer('all-MiniLM-L6-v2')  # 384 dimensions
@@ -70,7 +70,7 @@ def search_similar_chunks(
 ) -> List[Dict]:
     """Search for similar chunks"""
     query_vector = generate_embedding(query)
-    
+
     search_filter = None
     if chapter_filter:
         search_filter = Filter(
@@ -81,14 +81,14 @@ def search_similar_chunks(
                 )
             ]
         )
-    
-    results = qdrant_client.search(
+
+    results = qdrant_client.query_points(
         collection_name=COLLECTION_NAME,
-        query_vector=query_vector,
+        query=query_vector,
         limit=limit,
         query_filter=search_filter,
         with_payload=True
-    )
+    ).points
     
     chunks = []
     for result in results:
@@ -153,7 +153,7 @@ Book Context:
     return {
         "answer": answer,
         "sources": context_chunks,
-        "model": "gemini-pro"
+        "model": "gemini-2.5-flash"
     }
 
 def chat_with_rag(

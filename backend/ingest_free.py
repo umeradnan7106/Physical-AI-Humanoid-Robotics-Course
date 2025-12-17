@@ -115,8 +115,8 @@ def process_markdown_file(file_path: Path) -> List[Dict]:
 
 def ingest_all_documents():
     """Ingest all markdown files from docs directory"""
-    print("🚀 Starting book content ingestion (FREE VERSION)...")
-    print("📦 Using Sentence Transformers for embeddings (384 dimensions)")
+    print("Starting book content ingestion (FREE VERSION)...")
+    print("Using Sentence Transformers for embeddings (384 dimensions)")
 
     # Create collection
     create_collection()
@@ -149,14 +149,14 @@ def ingest_all_documents():
                 )
 
             total_chunks += len(documents)
-            print(f"  ✅ Uploaded {len(documents)} chunks")
+            print(f"  Uploaded {len(documents)} chunks")
 
         except Exception as e:
-            print(f"  ❌ Error processing {file_path.name}: {e}")
+            print(f"  Error processing {file_path.name}: {e}")
 
-    print(f"\n🎉 Ingestion complete!")
-    print(f"📊 Total chunks uploaded: {total_chunks}")
-    print(f"📚 Total files processed: {len(md_files)}")
+    print(f"\nIngestion complete!")
+    print(f"Total chunks uploaded: {total_chunks}")
+    print(f"Total files processed: {len(md_files)}")
 
 if __name__ == "__main__":
     ingest_all_documents()

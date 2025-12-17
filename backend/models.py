@@ -41,9 +41,9 @@ class Feedback(Base):
 class Analytics(Base):
     """Track usage analytics"""
     __tablename__ = "analytics"
-    
+
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     event_type = Column(String(100))  # chat, selection_chat, feedback
     session_id = Column(String(255), index=True)
-    metadata = Column(Text)  # JSON string
+    event_metadata = Column(Text)  # JSON string (renamed from 'metadata' to avoid SQLAlchemy reserved word)
     timestamp = Column(DateTime, default=datetime.utcnow)
