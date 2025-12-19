@@ -1,0 +1,38 @@
+====================================
+LOCAL SERVER CHALANE KA TAREEQA
+====================================
+
+STEP 1: Backend Start Karo
+---------------------------
+- "start-backend.bat" file pe DOUBLE CLICK karo
+- Black window khulega aur backend chal jayega
+- Port 8000 pe chalega
+- Window band mat karna!
+
+STEP 2: Frontend Start Karo
+---------------------------
+- "start-frontend.bat" file pe DOUBLE CLICK karo
+- Doosra black window khulega aur frontend chal jayega
+- Port 3000 pe chalega
+- Automatically browser mein khul jayega: http://localhost:3000
+- Window band mat karna!
+
+STEP 3: Test Karo
+-----------------
+- Browser mein jao: http://localhost:3000
+- Book dikhai degi with chatbot
+- Chatbot test karo
+
+Band Karne Ke Liye:
+-------------------
+- Dono black windows band kar do (X dabao)
+
+Important:
+----------
+- Backend aur Frontend DONO saath mein chalne chahiye
+- Dono ke liye alag alag windows khulenge
+- Dono windows ko open rakhna hai
+
+
+(frontend)cmd: npm start
+(backend)pwsh: python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
