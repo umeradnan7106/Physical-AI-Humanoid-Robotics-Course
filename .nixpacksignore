@@ -1,0 +1,13 @@
+# Ignore frontend files - only build Python backend
+package.json
+package-lock.json
+node_modules
+src
+static
+docs
+docusaurus.config.ts
+sidebars.ts
+tsconfig.json
+babel.config.js
+*.md
+!requirements.txt
