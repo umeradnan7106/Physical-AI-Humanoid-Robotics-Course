@@ -1,0 +1,120 @@
+================================================================
+RAILWAY DEPLOYMENT - STEP BY STEP GUIDE (Hinglish)
+================================================================
+
+STEP 1: Railway Dashboard Kholo
+--------------------------------
+- Browser mein jao: https://railway.app
+- Login karo
+- Apna project kholo
+
+STEP 2: Settings Configure Karo
+--------------------------------
+1. "Settings" tab pe click karo (left sidebar mein)
+
+2. "Source" section dhundo:
+   - "Root Directory" option dekho
+   - Agar nahi dikha to koi baat nahi, next step pe jao
+
+3. "Environment" section mein:
+   - Neeche scroll karo
+   - "Environment Variables" section mein ye sab ADD karo:
+
+   Variable Name              | Value
+   ---------------------------|----------------------------------------
+   GOOGLE_API_KEY             | (apni Google Gemini API key paste karo)
+   QDRANT_URL                 | (apna Qdrant cloud URL paste karo)
+   QDRANT_API_KEY             | (apni Qdrant API key paste karo)
+   QDRANT_COLLECTION_NAME     | physical_ai_book
+   DATABASE_URL               | (apna Neon Postgres URL paste karo)
+
+   Har variable ke liye:
+   - "New Variable" button dabao
+   - Name aur Value enter karo
+   - "Add" ya "Save" karo
+
+4. "Deploy" section mein (optional):
+   - Agar "Custom Start Command" option dikhe to:
+     python -m uvicorn main:app --host 0.0.0.0 --port $PORT
+   - Warna chhod do, Procfile automatically use hoga
+
+STEP 3: Root Directory Set Karo (IMPORTANT!)
+---------------------------------------------
+Agar Railway Settings mein "Root Directory" option hai:
+1. Root Directory field mein type karo: backend
+2. Save karo
+
+Agar "Root Directory" option NAHI hai:
+1. Project delete kar do
+2. Naya project banao:
+   - "New Project" → "Deploy from GitHub repo"
+   - Repository select karo: Physical-AI-Humanoid-Robotics-Course
+   - "Add variables" pe click karo
+   - Step 2 ke sab environment variables add karo
+   - Deploy karo
+
+STEP 4: Deployment Check Karo
+------------------------------
+1. "Deployments" tab pe jao
+2. Latest deployment pe click karo
+3. "View Logs" dekho
+
+Successful deployment mein ye dikhna chahiye:
+✅ Installing dependencies...
+✅ Successfully installed fastapi, uvicorn, google-generativeai...
+✅ INFO: Application startup complete
+✅ INFO: Uvicorn running on http://0.0.0.0:XXXX
+
+Agar error dikhe:
+❌ ModuleNotFoundError → Environment variables check karo
+❌ uvicorn: command not found → Root directory "backend" set karo
+❌ 502 Bad Gateway → Logs mein error dekho
+
+STEP 5: URL Test Karo
+---------------------
+1. Railway dashboard mein "Settings" tab pe jao
+2. "Domains" section mein apna URL copy karo
+   Example: https://physical-ai-humanoid-robotics-course-production-244c.up.railway.app
+
+3. Browser mein test karo:
+   URL + /health
+   Example: https://your-app.up.railway.app/health
+
+   Response aana chahiye:
+   {"status":"healthy","message":"API is running","version":"1.0.0"}
+
+4. API docs test karo:
+   URL + /docs
+   Example: https://your-app.up.railway.app/docs
+
+STEP 6: Frontend Mein URL Update Karo
+--------------------------------------
+(Ye main bad mein karunga, pehle backend working confirm karo!)
+
+================================================================
+TROUBLESHOOTING
+================================================================
+
+Problem: "uvicorn: command not found"
+Solution: Root Directory "backend" set karo ya project dobara banao
+
+Problem: "ModuleNotFoundError: No module named 'google'"
+Solution: Dependencies install nahi hui - cache clear karo:
+         Settings → General → "Clear build cache" → Redeploy
+
+Problem: "502 Bad Gateway"
+Solution: Deployment logs check karo, error wahan dikhega
+
+Problem: Environment variables nahi mil rahe
+Solution: Settings → Variables → Sab variables dobara check karo
+
+================================================================
+NEXT STEPS (Backend successful hone ke baad)
+================================================================
+
+1. Railway URL copy karo
+2. Mujhe batao - main frontend chatbot mein URL update kar dunga
+3. Frontend GitHub Pages pe deploy karenge
+4. Live chatbot test karenge
+
+================================================================
