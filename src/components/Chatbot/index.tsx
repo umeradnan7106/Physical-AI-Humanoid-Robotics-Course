@@ -28,7 +28,7 @@ const Chatbot: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const API_URL = process.env.NODE_ENV === 'production'
-    ? 'https://your-app.up.railway.app'  // Replace with your actual Railway URL
+    ? 'https://physical-ai-humanoid-robotics-chatbot-backend-production.up.railway.app'
     : 'http://localhost:8000';
 
   const scrollToBottom = () => {
